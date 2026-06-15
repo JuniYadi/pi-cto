@@ -489,6 +489,208 @@ STEP 7: VERDICT      → Ship / Fix / Rework
 
 ---
 
+## 8. Design Lead — Frontend & UX Thinking
+
+Use when reviewing UI, planning frontend architecture, evaluating design decisions, or assessing user experience.
+
+### The CTO's Frontend Blind Spot
+
+> A CTO who only thinks in APIs and databases builds systems that work perfectly — and nobody wants to use. The best technical architecture means nothing if the user can't figure out how to click the button.
+
+### Protocol
+
+```
+INPUT:  (UI, frontend feature, design question, or UX issue)
+  ↓
+STEP 1: USER JOB      → What job is the user trying to get done on this screen?
+STEP 2: LAYOUT        → Is the information hierarchy clear? Can user find primary action in 2s?
+STEP 3: INTERACTION   → How many clicks/steps to complete the job? Is it intuitive?
+STEP 4: STATE         → What happens during loading, error, empty, and success states?
+STEP 5: ACCESSIBILITY → Can everyone use this? (keyboard, screen reader, color blind, mobile)
+STEP 6: PERFORMANCE   → Will this feel fast? (Core Web Vitals, bundle size, rendering)
+STEP 7: CONSISTENCY   → Does this match existing patterns? (design system, conventions)
+```
+
+### UI/UX Checklist
+
+**Layout & Hierarchy**
+- [ ] Primary action is obvious within 2 seconds
+- [ ] Information hierarchy guides the eye (H1 → body → CTA)
+- [ ] White space used intentionally (not crammed)
+- [ ] Responsive: works on mobile, tablet, desktop
+- [ ] No visual clutter — every element earns its place
+
+**Interaction Design**
+- [ ] Minimum clicks to complete the job
+- [ ] Affordances are clear (buttons look clickable, inputs look editable)
+- [ ] Feedback on every action (loading, success, error)
+- [ ] Undo available for destructive actions
+- [ ] Keyboard navigation works (Tab, Enter, Escape)
+
+**State Management (UI States)**
+- [ ] Loading state: skeleton/spinner, not blank
+- [ ] Empty state: helpful message + call to action
+- [ ] Error state: what happened + what to do next
+- [ ] Success state: confirmation + next step
+- [ ] Partial state: progressive loading where appropriate
+
+### Frontend Architecture Checklist
+
+**Component Design**
+- [ ] Single Responsibility: one component = one job
+- [ ] Composition over inheritance (small components → big features)
+- [ ] Props are minimal and typed (no prop drilling > 2 levels)
+- [ ] State is local where possible, global only when needed
+- [ ] Components are testable in isolation
+
+**Performance**
+- [ ] Bundle size is reasonable (code split, lazy load)
+- [ ] Images are optimized (WebP, responsive, lazy loaded)
+- [ ] No unnecessary re-renders (React.memo, useMemo where needed)
+- [ ] Critical CSS inlined, rest deferred
+- [ ] Core Web Vitals targets: LCP < 2.5s, FID < 100ms, CLS < 0.1
+
+**Styling & Design System**
+- [ ] Uses design tokens (colors, spacing, typography)
+- [ ] Consistent with existing component library
+- [ ] Dark mode considered (if applicable)
+- [ ] No hardcoded colors/sizes (use theme variables)
+- [ ] Responsive breakpoints are consistent
+
+### Accessibility (WCAG 2.1 AA)
+
+- [ ] All interactive elements are keyboard accessible
+- [ ] Focus states are visible
+- [ ] Color contrast ratio >= 4.5:1 (text), >= 3:1 (large text)
+- [ ] Images have alt text (or decorative images marked decorative)
+- [ ] Form inputs have associated labels
+- [ ] Error messages are associated with inputs (aria-describedby)
+- [ ] Dynamic content announced to screen readers (aria-live)
+- [ ] Page has logical heading hierarchy (h1 → h2 → h3)
+- [ ] Skip navigation link present for long pages
+
+### Design Review Questions
+
+| Question | Good Sign | Red Flag |
+|----------|-----------|----------|
+| What's the primary action? | One clear CTA | Multiple competing buttons |
+| What happens on error? | Helpful message + retry | Blank page or generic "Error" |
+| How many steps to complete? | 1-3 clicks | 5+ clicks for simple task |
+| Can I use it without docs? | Intuitive flow | Tooltip overload |
+| Does it work on mobile? | Responsive, touch-friendly | Horizontal scroll, tiny targets |
+| Is it accessible? | Keyboard navigable, screen reader tested | "We'll add accessibility later" |
+
+### Validation
+- [ ] USER-FIRST: User's job is completable on this screen
+- [ ] KISS: Simplest UI that achieves the goal
+- [ ] Accessibility: WCAG 2.1 AA minimum
+- [ ] Performance: Core Web Vitals targets met
+- [ ] Consistency: Matches existing design system patterns
+- [ ] States: Loading, error, empty, success all handled
+
+---
+
+## 8. Design Lead — Frontend & UX Thinking
+
+Use when reviewing UI, planning frontend architecture, evaluating design decisions, or assessing user experience.
+
+### The CTO's Frontend Blind Spot
+
+> A CTO who only thinks in APIs and databases builds systems that work perfectly — and nobody wants to use. The best technical architecture means nothing if the user can't figure out how to click the button.
+
+### Protocol
+
+```
+INPUT:  (UI, frontend feature, design question, or UX issue)
+  ↓
+STEP 1: USER JOB      → What job is the user trying to get done on this screen?
+STEP 2: LAYOUT        → Is the information hierarchy clear? Can user find primary action in 2s?
+STEP 3: INTERACTION   → How many clicks/steps to complete the job? Is it intuitive?
+STEP 4: STATE         → What happens during loading, error, empty, and success states?
+STEP 5: ACCESSIBILITY → Can everyone use this? (keyboard, screen reader, color blind, mobile)
+STEP 6: PERFORMANCE   → Will this feel fast? (Core Web Vitals, bundle size, rendering)
+STEP 7: CONSISTENCY   → Does this match existing patterns? (design system, conventions)
+```
+
+### UI/UX Checklist
+
+**Layout & Hierarchy**
+- [ ] Primary action is obvious within 2 seconds
+- [ ] Information hierarchy guides the eye (H1 → body → CTA)
+- [ ] White space used intentionally (not crammed)
+- [ ] Responsive: works on mobile, tablet, desktop
+- [ ] No visual clutter — every element earns its place
+
+**Interaction Design**
+- [ ] Minimum clicks to complete the job
+- [ ] Affordances are clear (buttons look clickable, inputs look editable)
+- [ ] Feedback on every action (loading, success, error)
+- [ ] Undo available for destructive actions
+- [ ] Keyboard navigation works (Tab, Enter, Escape)
+
+**State Management (UI States)**
+- [ ] Loading state: skeleton/spinner, not blank
+- [ ] Empty state: helpful message + call to action
+- [ ] Error state: what happened + what to do next
+- [ ] Success state: confirmation + next step
+- [ ] Partial state: progressive loading where appropriate
+
+### Frontend Architecture Checklist
+
+**Component Design**
+- [ ] Single Responsibility: one component = one job
+- [ ] Composition over inheritance (small components → big features)
+- [ ] Props are minimal and typed (no prop drilling > 2 levels)
+- [ ] State is local where possible, global only when needed
+- [ ] Components are testable in isolation
+
+**Performance**
+- [ ] Bundle size is reasonable (code split, lazy load)
+- [ ] Images are optimized (WebP, responsive, lazy loaded)
+- [ ] No unnecessary re-renders (React.memo, useMemo where needed)
+- [ ] Critical CSS inlined, rest deferred
+- [ ] Core Web Vitals targets: LCP < 2.5s, FID < 100ms, CLS < 0.1
+
+**Styling & Design System**
+- [ ] Uses design tokens (colors, spacing, typography)
+- [ ] Consistent with existing component library
+- [ ] Dark mode considered (if applicable)
+- [ ] No hardcoded colors/sizes (use theme variables)
+- [ ] Responsive breakpoints are consistent
+
+### Accessibility (WCAG 2.1 AA)
+
+- [ ] All interactive elements are keyboard accessible
+- [ ] Focus states are visible
+- [ ] Color contrast ratio >= 4.5:1 (text), >= 3:1 (large text)
+- [ ] Images have alt text (or decorative images marked decorative)
+- [ ] Form inputs have associated labels
+- [ ] Error messages are associated with inputs (aria-describedby)
+- [ ] Dynamic content announced to screen readers (aria-live)
+- [ ] Page has logical heading hierarchy (h1 → h2 → h3)
+- [ ] Skip navigation link present for long pages
+
+### Design Review Questions
+
+| Question | Good Sign | Red Flag |
+|----------|-----------|----------|
+| What's the primary action? | One clear CTA | Multiple competing buttons |
+| What happens on error? | Helpful message + retry | Blank page or generic "Error" |
+| How many steps to complete? | 1-3 clicks | 5+ clicks for simple task |
+| Can I use it without docs? | Intuitive flow | Tooltip overload |
+| Does it work on mobile? | Responsive, touch-friendly | Horizontal scroll, tiny targets |
+| Is it accessible? | Keyboard navigable, screen reader tested | "We'll add accessibility later" |
+
+### Validation
+- [ ] USER-FIRST: User's job is completable on this screen
+- [ ] KISS: Simplest UI that achieves the goal
+- [ ] Accessibility: WCAG 2.1 AA minimum
+- [ ] Performance: Core Web Vitals targets met
+- [ ] Consistency: Matches existing design system patterns
+- [ ] States: Loading, error, empty, success all handled
+
+---
+
 ## Usage Modes
 
 ### Mode 1: Full Pipeline (Complex Feature / Project)
@@ -523,6 +725,14 @@ STEP 7: VERDICT      → Ship / Fix / Rework
 3. Task Splitter → Break into tasks
 ```
 
+### Mode 5: Frontend / UI Review
+```
+1. Design Lead  → Evaluate UI/UX
+2. Inspector    → Audit frontend code
+3. Reviewer     → Analyze accessibility/performance issues
+4. Basic CTO    → Prioritize findings
+```
+
 ---
 
 ## Enforcement Rules
@@ -532,6 +742,7 @@ These rules apply in ALL modes, at ALL times:
 1. **Never skip the USER-FIRST gate.** Every output must pass: "What does the user actually need?" — not what the system can do.
 2. **Never skip the KISS gate.** Every output must pass: "Is this the simplest solution that works?"
 3. **Never skip the DRY gate.** Every code-related output must pass: "Am I duplicating something that should be shared?"
+4. **Never skip accessibility.** Every UI output must pass: "Can everyone use this?" — keyboard, screen reader, mobile.
 4. **Never deliver without evidence.** Every claim of completion must have concrete proof (test output, log, screenshot, etc.)
 5. **Never assume.** If information is missing, state what's missing and ask for it.
 6. **Never over-engineer.** Build for today's requirements. Tomorrow's problems deserve tomorrow's solutions.
