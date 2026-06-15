@@ -4,7 +4,9 @@ CTO mode for [pi](https://pi.dev) — 20 years of engineering leadership codifie
 
 ## What It Does
 
-Activates CTO thinking with 7 skills, 7 gates, and cross-session persistence.
+Activates CTO thinking with 13 skills, 5 gates, and cross-session persistence.
+
+### Core Skills
 
 | Skill | Use When |
 |-------|----------|
@@ -16,6 +18,16 @@ Activates CTO thinking with 7 skills, 7 gates, and cross-session persistence.
 | **Delegation** | Assigning work to teams/agents |
 | **Final Review** | Verifying delivery before ship |
 | **Design Lead** | UI/UX reviews, frontend architecture, accessibility |
+
+### Document Generation Skills
+
+| Skill | Use When |
+|-------|----------|
+| **PRD** | Product Requirements Documents |
+| **Design Spec** | System architecture & API design docs |
+| **RFC** | Technical proposals & ADRs |
+| **Tech Spec** | Implementation specifications |
+| **Post-Mortem** | Incident RCA & learning docs |
 
 ## Gates (Always Active)
 
@@ -44,6 +56,13 @@ That's it. `/cto` and `/skill:cto` are now available globally.
 /cto delegation assign these tasks    → Task assignment
 /cto final-review verify the impl     → Delivery verification
 /cto design-lead review the UI       → UI/UX + accessibility review
+
+# Document Generation
+/cto prd create user auth feature    → Product Requirements Document
+/cto design-spec for payment flow    → System architecture doc
+/cto rfc propose new caching layer   → Technical RFC
+/cto tech-spec implement login page  → Implementation spec
+/cto post-mortem for outage on June 5 → Incident RCA
 ```
 
 ## Cross-Session Persistence
@@ -58,12 +77,29 @@ This creates `.cto/` in your project:
 
 ```
 .cto/
-├── decisions/      ← architectural decisions
-├── architecture/   ← system design docs
-└── tech-debt/      ← tracked debt
+├── decisions/        ← architectural decisions
+├── architecture/     ← system design docs
+├── tech-debt/        ← tracked debt
+├── prd/              ← product requirements documents
+├── design-specs/     ← architecture & API design docs
+├── rfcs/             ← technical proposals
+├── tech-specs/       ← implementation specifications
+└── post-mortems/     ← incident RCAs
 ```
 
 CTO reads these before making new decisions, maintaining consistency across sessions.
+
+## Lazy-Load Architecture
+
+Skills are loaded on demand — only the relevant skill file is read into context:
+
+| When You Say | What Loads | Tokens |
+|--------------|------------|--------|
+| `/cto reviewer` | core.md + reviewer.md | ~900 |
+| `/cto prd` | core.md + prd.md | ~1,000 |
+| `/cto design-spec` | core.md + design-spec.md | ~1,100 |
+
+**Not loaded:** Other skill files (saves ~10K tokens per request)
 
 ## File Structure
 
@@ -71,17 +107,35 @@ CTO reads these before making new decisions, maintaining consistency across sess
 @juniyadi/pi-cto/
 ├── skills/
 │   └── cto/
-│       ├── SKILL.md                 ← skill entry point
-│       ├── references/
-│       │   └── framework.md         ← full CTO framework
-│       └── templates/
+│       ├── SKILL.md                    ← router (detects mode, loads skill)
+│       ├── core.md                     ← gates & enforcement (always loaded)
+│       ├── skills/                     ← individual skill protocols
+│       │   ├── basic-cto.md
+│       │   ├── reviewer.md
+│       │   ├── inspector.md
+│       │   ├── planner.md
+│       │   ├── task-splitter.md
+│       │   ├── delegation.md
+│       │   ├── final-review.md
+│       │   ├── design-lead.md
+│       │   ├── prd.md
+│       │   ├── design-spec.md
+│       │   ├── rfc.md
+│       │   ├── tech-spec.md
+│       │   └── post-mortem.md
+│       └── templates/                  ← document templates
 │           ├── README.md
 │           ├── decision.md
 │           ├── tech-debt.md
-│           └── architecture.md
+│           ├── architecture.md
+│           ├── prd.md
+│           ├── design-spec.md
+│           ├── rfc.md
+│           ├── tech-spec.md
+│           └── post-mortem.md
 └── prompts/
-    ├── cto.md                       ← /cto command
-    └── cto-init.md                  ← /cto-init command
+    ├── cto.md                          ← /cto command
+    └── cto-init.md                     ← /cto-init command
 ```
 
 ## Updating
