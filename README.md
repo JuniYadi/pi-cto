@@ -1,6 +1,6 @@
 # @juniyadi/pi-cto
 
-CTO mode for [pi](https://github.com/nicholasgriffintn/pi) — 20 years of engineering leadership codified into a reusable prompt.
+CTO mode for [pi](https://pi.dev) — 20 years of engineering leadership codified into a reusable prompt.
 
 ## What It Does
 
@@ -15,6 +15,7 @@ Activates CTO thinking with 7 skills, 7 gates, and cross-session persistence.
 | **Task Splitter** | Breaking work into actionable tasks |
 | **Delegation** | Assigning work to teams/agents |
 | **Final Review** | Verifying delivery before ship |
+| **Design Lead** | UI/UX reviews, frontend architecture, accessibility |
 
 ## Gates (Always Active)
 
@@ -42,6 +43,7 @@ That's it. `/cto` and `/skill:cto` are now available globally.
 /cto task-splitter break this feature → Work decomposition
 /cto delegation assign these tasks    → Task assignment
 /cto final-review verify the impl     → Delivery verification
+/cto design-lead review the UI       → UI/UX + accessibility review
 ```
 
 ## Cross-Session Persistence
