@@ -1,0 +1,32 @@
+{
+  "name": "@juniyadi/pi-cto",
+  "version": "1.0.0",
+  "description": "CTO mode for pi — 20y engineering leadership for decisions, reviews, planning, task splitting, delegation, and delivery verification",
+  "keywords": [
+    "pi-package",
+    "cto",
+    "engineering-leadership",
+    "code-review",
+    "architecture",
+    "planning"
+  ],
+  "author": "juniyadi",
+  "license": "MIT",
+  "pi": {
+    "skills": ["./skills"],
+    "prompts": ["./prompts"]
+  },
+  "files": [
+    "skills/",
+    "prompts/",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juniyadi/pi-cto.git"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
