@@ -43,7 +43,7 @@ Activates CTO thinking with 13 skills, 5 gates, and cross-session persistence.
 pi install npm:@juniyadi/pi-cto
 ```
 
-That's it. `/cto` and `/skill:cto` are now available globally.
+That's it. `/cto`, `/cto-init`, `/cto-status`, `/cto-continue`, and `/skill:cto` are now available globally.
 
 ## Usage
 
@@ -56,6 +56,11 @@ That's it. `/cto` and `/skill:cto` are now available globally.
 /cto delegation assign these tasks    → Task assignment
 /cto final-review verify the impl     → Delivery verification
 /cto design-lead review the UI       → UI/UX + accessibility review
+
+# Continuation Context
+/cto-status                         → List indexed continuation contexts
+/cto-status billing-migration       → Show index status for one slug
+/cto-continue billing-migration     → Resume with index + one feature guide
 
 # Document Generation
 /cto prd create user auth feature    → Product Requirements Document
@@ -78,6 +83,11 @@ This creates `.cto/` in your project:
 ```
 .cto/
 ├── decisions/        ← architectural decisions
+├── reviews/          ← review reports
+├── tasks/            ← actionable work units
+├── context/          ← lazy-loaded continuation context
+│   ├── index.md      ← compact status index
+│   └── {slug}.md     ← one feature/context guide
 ├── architecture/     ← system design docs
 ├── tech-debt/        ← tracked debt
 ├── prd/              ← product requirements documents
@@ -87,7 +97,7 @@ This creates `.cto/` in your project:
 └── post-mortems/     ← incident RCAs
 ```
 
-CTO reads these before making new decisions, maintaining consistency across sessions.
+CTO uses these artifacts to maintain consistency across sessions. Continuation context is lazy-loaded: `/cto-status [slug]` reads only `.cto/context/index.md`, while `/cto-continue {slug}` reads the index plus the requested `.cto/context/{slug}.md` guide.
 
 ## Lazy-Load Architecture
 
@@ -98,8 +108,10 @@ Skills are loaded on demand — only the relevant skill file is read into contex
 | `/cto reviewer` | core.md + reviewer.md | ~900 |
 | `/cto prd` | core.md + prd.md | ~1,000 |
 | `/cto design-spec` | core.md + design-spec.md | ~1,100 |
+| `/cto-status` | `.cto/context/index.md` only | project-sized |
+| `/cto-continue {slug}` | core.md + context index + one slug guide | project-sized |
 
-**Not loaded:** Other skill files (saves ~10K tokens per request)
+**Not loaded:** Other skill files or unrelated `.cto/context/*.md` guides (saves tokens per request)
 
 ## File Structure
 
@@ -126,6 +138,10 @@ Skills are loaded on demand — only the relevant skill file is read into contex
 │       └── templates/                  ← document templates
 │           ├── README.md
 │           ├── decision.md
+│           ├── review.md
+│           ├── task.md
+│           ├── context-index.md
+│           ├── context-guide.md
 │           ├── tech-debt.md
 │           ├── architecture.md
 │           ├── prd.md
@@ -135,7 +151,9 @@ Skills are loaded on demand — only the relevant skill file is read into contex
 │           └── post-mortem.md
 └── prompts/
     ├── cto.md                          ← /cto command
-    └── cto-init.md                     ← /cto-init command
+    ├── cto-init.md                     ← /cto-init command
+    ├── cto-status.md                   ← /cto-status command
+    └── cto-continue.md                 ← /cto-continue command
 ```
 
 ## Updating

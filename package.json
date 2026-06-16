@@ -1,6 +1,6 @@
 {
   "name": "@juniyadi/pi-cto",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "CTO mode for pi — 20y engineering leadership for decisions, reviews, planning, task splitting, delegation, and delivery verification",
   "keywords": [
     "pi-package",
@@ -20,6 +20,7 @@
     "skills/",
     "prompts/",
     "README.md",
+    "CHANGELOG.md",
     "LICENSE"
   ],
   "repository": {

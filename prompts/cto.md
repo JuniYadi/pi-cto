@@ -33,6 +33,8 @@ Read `skills/cto/core.md` for gates and enforcement rules.
 
 Read the single skill file for the detected mode. Do NOT load all files.
 
+Continuation context is also lazy-loaded: `/cto` must not eagerly read `.cto/context/*.md`. Use `/cto-status [slug]` for index-only status and `/cto-continue {slug}` to load the index plus one requested feature guide.
+
 ## Step 4: Execute
 
 1. Apply gates from `core.md` (USER-FIRST, KISS, DRY, YAGNI)
@@ -41,6 +43,7 @@ Read the single skill file for the detected mode. Do NOT load all files.
 4. Write significant decisions to `.cto/decisions/` (with full context: what prompted it, rationale, alternatives, user impact)
 5. Write review reports to `.cto/reviews/` when in review-adjacent modes (reviewer, inspector, final-review, design-lead, basic-cto)
 6. Write actionable tasks to `.cto/tasks/` when task-splitter or delegation produces work units
+7. When continuation context is relevant, update `.cto/context/index.md` summaries/statuses and only the active `.cto/context/{slug}.md` guide; do not load unrelated guides
 
 ## Pipeline Mode (Full Lifecycle)
 

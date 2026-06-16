@@ -31,6 +31,15 @@ Read `core.md` for identity, gates, and enforcement rules.
 
 Read ONLY the detected skill file from `skills/` directory. Do NOT load all skill files.
 
+## Continuation Context
+
+Project continuation context lives under `.cto/context/` and is loaded separately from normal `/cto` mode:
+
+- `/cto` does not eagerly load `.cto/context/*.md`.
+- `/cto-status [slug]` reads only `.cto/context/index.md` for summaries and status.
+- `/cto-continue {slug}` reads `core.md`, `.cto/context/index.md`, and only `.cto/context/{slug}.md` for the requested slug.
+- Add or update a slug guide only when it contains material cross-session context that is worth preserving.
+
 ## Step 4: Apply
 
 1. Apply gates from `core.md` (always active)
@@ -51,6 +60,8 @@ Read ONLY the detected skill file from `skills/` directory. Do NOT load all skil
 | `.cto/decisions/` | Decision records (project) |
 | `.cto/reviews/` | Review reports (project) |
 | `.cto/tasks/` | Task records (project) |
+| `.cto/context/index.md` | Token-efficient continuation index (project) |
+| `.cto/context/{slug}.md` | Feature-specific continuation guide loaded on demand (project) |
 
 ## Constraints
 
@@ -61,4 +72,5 @@ Read ONLY the detected skill file from `skills/` directory. Do NOT load all skil
 - Write review reports to `.cto/reviews/` when in review-adjacent modes (reviewer, inspector, final-review, design-lead, basic-cto)
 - Write tasks to `.cto/tasks/` when task-splitter or delegation produces actionable work units
 - Reference previous decisions, reviews, and tasks for consistency
+- Keep continuation context lazy: index-only for status, index plus one slug guide for continuation, never all guides by default
 - Never skip validation rules from the loaded skill

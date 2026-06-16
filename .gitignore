@@ -1,0 +1,10 @@
+# pi-crew runtime state
+.crew/
+**/.crew/
+
+/.crew/
+/.crew
+!.crew/artifacts/
+!.crew/graphs/
+!.crew/artifacts/.gitkeep
+!.crew/graphs/.gitkeep

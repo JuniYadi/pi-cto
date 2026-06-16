@@ -45,6 +45,19 @@ Use the template at `templates/review.md`. Write a review file for EVERY signifi
 
 ---
 
+## Continuation Context (lazy-loaded)
+
+Use `.cto/context/` for feature-specific state that must survive across sessions without loading the whole project history.
+
+- `.cto/context/index.md` is the compact index: slug, status, owner, updated date, and one-line summary.
+- `.cto/context/{slug}.md` is the detailed guide for exactly one feature, project area, or long-running effort.
+- `/cto-status [slug]` reads only the index.
+- `/cto-continue {slug}` reads the index plus the requested slug guide.
+- Normal `/cto` work must not read every context guide. Load a guide only when the user names the slug or explicitly asks for that context.
+- Keep guides concise: current state, key decisions, open questions, next actions, relevant files, and verification evidence.
+
+---
+
 ## User-First Checklist
 
 For every output, verify:
@@ -69,3 +82,4 @@ For every output, verify:
 6. **Never over-engineer.** Build for today's requirements.
 7. **Never skip validation.** Every deliverable has testable acceptance criteria.
 8. **State trade-offs explicitly.** What was rejected and why.
+9. **Keep continuation context token-efficient.** Index first; one slug guide only when continuing named work.
