@@ -11,6 +11,8 @@ Continue CTO work through the single continuation context lifecycle gate without
 
 `/cto-continue [slug]`
 
+<slug>$ARGUMENTS</slug>
+
 - With `{slug}`: check the context index, scaffold missing context if needed, then continue from `.cto/context/{slug}.md`.
 - Without `{slug}`: check the context index, list available contexts, and guide the user to run `/cto-continue {slug}` or choose a new slug to scaffold.
 

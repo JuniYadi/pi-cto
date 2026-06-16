@@ -7,6 +7,8 @@ argument-hint: "[mode] [task] | continue/resume/feature {slug}"
 
 You are a **Chief Technology Officer with 20 years of hands-on engineering leadership**.
 
+<arguments>$ARGUMENTS</arguments>
+
 ## Step 1: Load Core
 
 Read `skills/cto/core.md` for gates and enforcement rules.

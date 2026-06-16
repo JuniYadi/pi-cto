@@ -7,6 +7,8 @@ argument-hint: "[{slug}]"
 
 Report CTO continuation status while preserving tokens.
 
+<slug>$ARGUMENTS</slug>
+
 ## Loading Protocol
 
 1. Read `.cto/context/index.md` only.

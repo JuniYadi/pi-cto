@@ -6,6 +6,12 @@ This changelog was reconstructed from git history and release tags.
 
 ## [Unreleased]
 
+## [1.7.0] - 2026-06-17
+
+### Changed
+- Added slash command argument wrapping with explicit prompt tags so `/cto`, `/cto-status`, and `/cto-continue` receive the user's full command arguments reliably.
+- Preserved continuation slug handling while making argument forwarding explicit for status and continuation prompts.
+
 ## [1.6.0] - 2026-06-17
 
 ### Changed
@@ -94,8 +100,9 @@ This changelog was reconstructed from git history and release tags.
   - tech-debt records
 - Added package metadata, README, and MIT license.
 
-[Unreleased]: https://github.com/juniyadi/pi-cto/compare/1.6.0...HEAD
-[1.6.0]: https://github.com/juniyadi/pi-cto/compare/1.5.0...1.6.0
+[Unreleased]: https://github.com/juniyadi/pi-cto/compare/1.7.0...HEAD
+[1.7.0]: https://github.com/juniyadi/pi-cto/compare/b5f31ac...1.7.0
+[1.6.0]: https://github.com/juniyadi/pi-cto/compare/1.5.0...b5f31ac
 [1.5.0]: https://github.com/juniyadi/pi-cto/compare/1.4.0...1.5.0
 [1.4.0]: https://github.com/juniyadi/pi-cto/compare/1.3.0...1.4.0
 [1.3.0]: https://github.com/juniyadi/pi-cto/compare/99b00e5...1.3.0
