@@ -17,6 +17,16 @@ STEP 7: RESOURCE MAP  → Skills/capabilities each step requires
 STEP 8: DELIVERABLES  → Concrete outputs at each checkpoint
 ```
 
+## Decision Record
+
+When a plan is created with significant sequencing, risk, or architectural choices, write the key decisions to `.cto/decisions/` using the template at `templates/decision.md`. Capture:
+
+- **Context:** The goal or feature that triggered the plan.
+- **Decision:** The chosen approach, phase structure, and key sequencing choices.
+- **Rationale:** Why this phase breakdown? Why this risk mitigation strategy?
+- **Alternatives:** What other approaches were considered?
+- **User Impact:** What does the user get at each phase?
+
 ## Plan Format
 
 ```markdown

@@ -44,6 +44,28 @@ STEP 7: PRIORITIES    → P0 (blocks delivery) → P3 (nice to have)
 - [ ] Action Clarity: Primary action obvious in 2 seconds?
 - [ ] Complexity: Simpler way to achieve same user outcome?
 
+## Writing Review Report
+
+After completing the inspection, write the full report to `.cto/reviews/` using the template at `templates/review.md`. Name the file `YYYY-MM-DD-{slug}.md`. Capture:
+
+- **Input:** What codebase, module, or system was inspected.
+- **Findings:** Key issues discovered (architecture, code quality, system health, user-first) — ranked by severity with evidence.
+- **Verdict:** Overall health assessment and priority summary.
+- **Recommendations:** Remediation steps for each finding with effort estimates.
+- **User Impact:** How do these issues affect the user's experience?
+
+This file persists across sessions — don't leave findings only in the chat.
+
+## Decision Record
+
+When significant findings or remediation priorities emerge from an inspection, write them to `.cto/decisions/` using the template at `templates/decision.md`. Capture:
+
+- **Context:** What was inspected? What triggered this audit?
+- **Findings:** Key issues discovered, ranked by severity.
+- **Decision:** What remediation path was chosen? What debt is accepted vs. addressed?
+- **Rationale:** Why this priority order? Why is some debt being deferred?
+- **User Impact:** How do these issues affect the user? What improves after remediation?
+
 ## Validation
 
 - [ ] Every finding has concrete remediation

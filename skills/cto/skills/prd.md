@@ -81,6 +81,16 @@ STEP 8: OUT OF SCOPE  → What we explicitly won't build (yet)
 | [milestone] | [date] | [owner] |
 ```
 
+## Decision Record
+
+When scope, priority, or feature decisions are made during PRD creation, write them to `.cto/decisions/` using the template at `templates/decision.md`. Capture:
+
+- **Context:** The feature idea, user need, or business goal — what prompted this PRD.
+- **Decision:** What's in scope for v1? What's explicitly out? What was the success criteria decision?
+- **Rationale:** Why this scope boundary? Why these success metrics?
+- **Alternatives:** What features or approaches were cut and why?
+- **User Impact:** Does the scope decision still serve the user's core job?
+
 ## Validation
 
 - [ ] Problem statement is clear and quantified

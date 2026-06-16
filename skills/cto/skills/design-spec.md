@@ -100,6 +100,17 @@ STEP 8: FAILURE       → What happens when things break?
 - [ ] [question 1]
 ```
 
+## Decision Record
+
+When architecture decisions are made in this design spec, write them to `.cto/decisions/` using the template at `templates/decision.md`. Capture:
+
+- **Context:** The requirements and constraints that drove this design.
+- **Decision:** The chosen architecture, components, interfaces, and data model.
+- **Rationale:** Why this architecture over alternatives.
+- **Alternatives:** What architectures were considered and rejected?
+- **Consequences:** What trade-offs were accepted?
+- **User Impact:** How does this architecture serve the user's job?
+
 ## Validation
 
 - [ ] Requirements trace back to PRD

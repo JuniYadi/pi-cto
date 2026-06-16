@@ -67,6 +67,29 @@ STEP 7: CONSISTENCY   → Does this match existing patterns? (design system, con
 - [ ] Critical CSS inlined, rest deferred
 - [ ] Core Web Vitals: LCP < 2.5s, FID < 100ms, CLS < 0.1
 
+## Writing Review Report
+
+After completing the design review, write the full report to `.cto/reviews/` using the template at `templates/review.md`. Name the file `YYYY-MM-DD-{slug}.md`. Capture:
+
+- **Input:** The UI, screen, or user flow that was reviewed.
+- **Findings:** Layout, interaction, state, accessibility, performance, and consistency issues.
+- **Verdict:** Overall assessment of the design quality.
+- **Recommendations:** Specific fixes for each finding.
+- **User Impact:** How does this design help (or hinder) the user's job?
+
+This file persists across sessions — don't leave findings only in the chat.
+
+## Decision Record
+
+When significant design decisions or UX trade-offs are made, write them to `.cto/decisions/` using the template at `templates/decision.md`. Capture:
+
+- **Context:** The UI, screen, or user flow being reviewed — what prompted this.
+- **Decision:** The chosen layout, interaction pattern, or component approach.
+- **Rationale:** Why this design over alternatives (based on user job, not aesthetics).
+- **Alternatives:** What other design patterns were considered?
+- **User Impact:** How does this improve the user's ability to complete their job?
+- **Accessibility:** What accessibility decisions were made?
+
 ## Validation
 
 - [ ] USER-FIRST: User's job is completable on this screen

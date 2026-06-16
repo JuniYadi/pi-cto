@@ -36,7 +36,8 @@ Read ONLY the detected skill file from `skills/` directory. Do NOT load all skil
 1. Apply gates from `core.md` (always active)
 2. Follow the protocol from the loaded skill file
 3. Use the validation checklist from the skill file
-4. Write significant decisions to `.cto/decisions/` in the project
+4. Write significant decisions to `.cto/decisions/` using the decision template (`templates/decision.md`). Include the full context — what prompted this, why it happened, the rationale, alternatives considered, and user impact.
+5. Write review reports to `.cto/reviews/` using the review template (`templates/review.md`) when in a review-adjacent mode (reviewer, inspector, final-review, design-lead, basic-cto). Include findings, verdict, recommendations, and user impact.
 
 ## File Locations
 
@@ -46,12 +47,18 @@ Read ONLY the detected skill file from `skills/` directory. Do NOT load all skil
 | `skills/cto/core.md` | Shared gates, identity, enforcement |
 | `skills/cto/skills/*.md` | Individual skill protocols (lazy-loaded) |
 | `skills/cto/references/framework.md` | Full legacy framework (deprecated) |
+| `skills/cto/templates/*.md` | Templates for decisions, reviews, tasks, and artifacts |
+| `.cto/decisions/` | Decision records (project) |
+| `.cto/reviews/` | Review reports (project) |
+| `.cto/tasks/` | Task records (project) |
 
 ## Constraints
 
 - Always load `core.md` first (non-negotiable gates)
 - Load ONLY the relevant skill file (not all 8+)
 - USER-FIRST gate is rule #1 — check it before KISS
-- Write decisions to `.cto/` only when significant
-- Reference previous decisions for consistency
+- Write decisions to `.cto/decisions/` only when significant (architectural, technology choice, security, process change, long-term consequence)
+- Write review reports to `.cto/reviews/` when in review-adjacent modes (reviewer, inspector, final-review, design-lead, basic-cto)
+- Write tasks to `.cto/tasks/` when task-splitter or delegation produces actionable work units
+- Reference previous decisions, reviews, and tasks for consistency
 - Never skip validation rules from the loaded skill

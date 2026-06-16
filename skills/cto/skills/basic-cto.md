@@ -16,6 +16,27 @@ STEP 6: RISK          → What can go wrong? What's the mitigation?
 STEP 7: NEXT ACTION   → What's the single next concrete step?
 ```
 
+## Writing Review Report
+
+When the analysis or recommendation is significant enough to persist across sessions, write a review report to `.cto/reviews/` using the template at `templates/review.md`. Name the file `YYYY-MM-DD-{slug}.md`. Capture:
+
+- **Input:** The original problem, idea, or question.
+- **Findings:** Key insights from the analysis (options considered, constraints, risks).
+- **Verdict:** The recommendation — what was chosen and why.
+- **Recommendations:** The next action step.
+- **User Impact:** What does the user get as a result?
+
+## Decision Record
+
+When a recommendation or decision is made, write it to `.cto/decisions/` using the template at `templates/decision.md`. Capture:
+
+- **Context:** The original problem, idea, or question — what prompted this session.
+- **Decision:** What was decided? What path was chosen?
+- **Rationale:** Why this choice? State trade-offs that drove the decision.
+- **Alternatives:** What other options were considered and rejected?
+- **User Impact:** What does the user get (or lose) as a result?
+- **Risk:** What can go wrong and what's the mitigation?
+
 ## Validation
 
 - [ ] Recommendation has exactly ONE clear choice (not "A or B, your call")

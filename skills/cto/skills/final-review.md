@@ -16,6 +16,29 @@ STEP 6: EVIDENCE     → Proof it works (tests, logs, output)
 STEP 7: VERDICT      → Ship / Fix / Rework
 ```
 
+## Writing Review Report
+
+After completing the final review, write the full report to `.cto/reviews/` using the template at `templates/review.md`. Name the file `YYYY-MM-DD-{slug}.md`. Capture:
+
+- **Input:** The original implementation goal and what was delivered.
+- **Findings:** Gap analysis (deliver vs. intent), quality checklist results, new risks.
+- **Verdict:** SHIP / FIX / REWORK with justification.
+- **Recommendations:** Required fixes or rework steps.
+- **User Impact:** Does this deliver the user's intended job?
+- **Evidence:** Proof that it works (tests, logs, output).
+
+This file persists across sessions — don't leave findings only in the chat.
+
+## Decision Record
+
+When a verdict (SHIP / FIX / REWORK) and any associated change decisions are made, write to `.cto/decisions/` using the template at `templates/decision.md`. Capture:
+
+- **Context:** The original implementation goal and what was actually built — what triggered this review.
+- **Decision:** The verdict and any required rework decisions.
+- **Rationale:** What evidence drove the verdict? What gaps were found?
+- **Consequences:** What happens if we ship now vs. fix first?
+- **User Impact:** Does this deliver the user's intended job or not?
+
 ## Quality Checklist (Must pass ALL)
 
 ### User-First (Check FIRST)

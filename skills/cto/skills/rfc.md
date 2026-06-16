@@ -99,6 +99,17 @@ STEP 8: OPEN QUESTIONS→ What do we still need to decide?
 - [link to related docs, PRDs, or prior RFCs]
 ```
 
+## Decision Record
+
+When an RFC reaches a decision (Accepted / Rejected / Superseded), write it to `.cto/decisions/` using the template at `templates/decision.md`. Capture:
+
+- **Context:** The problem that warrants this RFC — what's at stake if we don't act?
+- **Decision:** The final decision and the recommended approach.
+- **Rationale:** Why this approach over others? What trade-offs were accepted?
+- **Alternatives:** Every option considered and why it wasn't chosen.
+- **Consequences:** Positive, negative, and neutral outcomes of this decision.
+- **User Impact:** How does this RFC (or its rejection) affect users?
+
 ## Validation
 
 - [ ] Problem is clear and urgent enough to warrant an RFC

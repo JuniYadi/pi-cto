@@ -122,6 +122,16 @@ STEP 8: LESSONS       → What did we learn? What surprised us?
 - [link to related incidents]
 ```
 
+## Decision Record
+
+When a post-mortem produces remediation decisions or systemic findings, write them to `.cto/decisions/` using the template at `templates/decision.md`. Capture:
+
+- **Context:** The incident that triggered this post-mortem — timeline, impact, severity.
+- **Decision:** The chosen remediation actions, systemic changes, and detection improvements.
+- **Rationale:** Why these actions over others? Why is some remediation deferred?
+- **Consequences:** What changes as a result of these decisions?
+- **User Impact:** How does the incident and its remediation affect users?
+
 ## Validation
 
 - [ ] Timeline is chronological and complete

@@ -14,6 +14,10 @@ Initialize the `.cto/` directory structure in the current project. This enables 
 ├── README.md
 ├── decisions/
 │   └── _template.md
+├── reviews/
+│   └── _template.md
+├── tasks/
+│   └── _template.md
 ├── architecture/
 │   └── _template.md
 ├── tech-debt/
@@ -44,9 +48,11 @@ Initialize the `.cto/` directory structure in the current project. This enables 
 |----------|--------|-------------|
 | README.md | `skills/cto/templates/README.md` | `.cto/README.md` |
 | Decision | `skills/cto/templates/decision.md` | `.cto/decisions/_template.md` |
+| Review | `skills/cto/templates/review.md` | `.cto/reviews/_template.md` |
 | Tech Debt | `skills/cto/templates/tech-debt.md` | `.cto/tech-debt/_template.md` |
 | Architecture | `skills/cto/templates/architecture.md` | `.cto/architecture/_template.md` |
 | PRD | `skills/cto/templates/prd.md` | `.cto/prd/_template.md` |
+| Task | `skills/cto/templates/task.md` | `.cto/tasks/_template.md` |
 | Design Spec | `skills/cto/templates/design-spec.md` | `.cto/design-specs/_template.md` |
 | RFC | `skills/cto/templates/rfc.md` | `.cto/rfcs/_template.md` |
 | Tech Spec | `skills/cto/templates/tech-spec.md` | `.cto/tech-specs/_template.md` |
@@ -58,4 +64,4 @@ After creating the structure, confirm:
 - [ ] All directories created
 - [ ] All templates copied
 - [ ] .gitignore updated
-- [ ] User knows how to use `/cto` for decisions and document generation
+- [ ] User knows how to use `/cto` for decisions, tasks, and document generation

@@ -38,7 +38,9 @@ Read the single skill file for the detected mode. Do NOT load all files.
 1. Apply gates from `core.md` (USER-FIRST, KISS, DRY, YAGNI)
 2. Follow the protocol from the loaded skill
 3. Use the validation checklist from the skill
-4. Write significant decisions to `.cto/decisions/`
+4. Write significant decisions to `.cto/decisions/` (with full context: what prompted it, rationale, alternatives, user impact)
+5. Write review reports to `.cto/reviews/` when in review-adjacent modes (reviewer, inspector, final-review, design-lead, basic-cto)
+6. Write actionable tasks to `.cto/tasks/` when task-splitter or delegation produces work units
 
 ## Pipeline Mode (Full Lifecycle)
 

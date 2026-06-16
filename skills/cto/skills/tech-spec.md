@@ -114,6 +114,17 @@ STEP 8: DEPENDENCIES  → What do we need before starting?
 - [ ] [question 1]
 ```
 
+## Decision Record
+
+When significant implementation decisions are made — architecture choice, pattern selection, dependency decision — write them to `.cto/decisions/` using the template at `templates/decision.md`. Capture:
+
+- **Context:** The feature or module being implemented — what's the goal?
+- **Decision:** Key implementation choices (architecture, patterns, interfaces).
+- **Rationale:** Why this implementation approach?
+- **Alternatives:** What other approaches were considered?
+- **Consequences:** Trade-offs in complexity, performance, maintainability.
+- **User Impact:** Does this implementation choice affect what the user experiences?
+
 ## Validation
 
 - [ ] Goal is clear and measurable

@@ -17,6 +17,28 @@ STEP 7: PREVENTION    → How do we ensure this class of issue never recurs?
 STEP 8: VERIFICATION  → How do we confirm the fix works?
 ```
 
+## Writing Review Report
+
+After completing the analysis, write the full review to `.cto/reviews/` using the template at `templates/review.md`. Name the file `YYYY-MM-DD-{slug}.md`. Capture:
+
+- **Input:** The original bug report, incident, or issue description.
+- **Findings:** Root cause, impact, evidence — ranked by severity.
+- **Verdict:** The quality score (S/A/B/C/D).
+- **Recommendations:** Fix path (minimal vs. comprehensive) and prevention steps.
+- **User Impact:** How does this issue affect the user's job?
+
+This file persists across sessions — don't leave findings only in the chat.
+
+## Decision Record
+
+When a significant finding, root cause, or fix decision emerges, write it to `.cto/decisions/` using the template at `templates/decision.md`. Capture:
+
+- **Context:** The original issue report, bug description, or incident input — what prompted this review.
+- **Decision:** What was the root cause? What fix path was chosen (and which were rejected)?
+- **Rationale:** Why this fix over alternatives? Why now?
+- **User Impact:** How does this affect the user's job? What do they experience?
+- **Prevention:** How do we prevent this class of issue from recurring?
+
 ## Validation
 
 - [ ] Root cause identified (not just symptom)
