@@ -60,7 +60,8 @@ That's it. `/cto`, `/cto-init`, `/cto-status`, `/cto-continue`, and `/skill:cto`
 # Continuation Context
 /cto-status                         → List indexed continuation contexts
 /cto-status billing-migration       → Show index status for one slug
-/cto-continue billing-migration     → Resume with index + one feature guide
+/cto-continue billing-migration     → Check/scaffold context, then resume one guide
+/cto-continue                       → List contexts and suggest next step
 
 # Document Generation
 /cto prd create user auth feature    → Product Requirements Document
@@ -97,7 +98,7 @@ This creates `.cto/` in your project:
 └── post-mortems/     ← incident RCAs
 ```
 
-CTO uses these artifacts to maintain consistency across sessions. Continuation context is lazy-loaded: `/cto-status [slug]` reads only `.cto/context/index.md`, while `/cto-continue {slug}` reads the index plus the requested `.cto/context/{slug}.md` guide.
+CTO uses these artifacts to maintain consistency across sessions. Continuation context is lazy-loaded: `/cto-status [slug]` reads only `.cto/context/index.md`, while `/cto-continue [slug]` is the lifecycle gate: with a slug it checks/scaffolds missing context and reads only the requested guide; without a slug it lists contexts and guides the user.
 
 ## Lazy-Load Architecture
 
@@ -109,7 +110,7 @@ Skills are loaded on demand — only the relevant skill file is read into contex
 | `/cto prd` | core.md + prd.md | ~1,000 |
 | `/cto design-spec` | core.md + design-spec.md | ~1,100 |
 | `/cto-status` | `.cto/context/index.md` only | project-sized |
-| `/cto-continue {slug}` | core.md + context index + one slug guide | project-sized |
+| `/cto-continue [slug]` | core.md + context index + one slug guide; templates only if scaffolding | project-sized |
 
 **Not loaded:** Other skill files or unrelated `.cto/context/*.md` guides (saves tokens per request)
 

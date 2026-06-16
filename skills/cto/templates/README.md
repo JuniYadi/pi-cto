@@ -25,8 +25,8 @@ Cross-session engineering leadership documentation. Managed by the CTO skill (`/
 ## How It Works
 
 1. **CTO skill writes decisions** to `.cto/decisions/`, **reviews** to `.cto/reviews/`, and **tasks** to `.cto/tasks/` during a session
-2. **Continuation context is lazy-loaded** from `.cto/context/`: status reads only the index; continuation reads one named guide
-3. **Next session reads only what is needed** — use `/cto-status [slug]` for summaries and `/cto-continue {slug}` for a specific feature guide
+2. **Continuation context is lazy-loaded** from `.cto/context/`: status reads only the index; continuation checks/scaffolds as needed and reads one named guide
+3. **Next session reads only what is needed** — use `/cto-status [slug]` for summaries and `/cto-continue [slug]` as the continuation lifecycle gate
 4. **Gitignored** — these are working documents, not source code
 
 ## Continuation Context
@@ -35,10 +35,10 @@ Use continuation context for long-running features, migrations, incidents, or ar
 
 - Index: `.cto/context/index.md` is scaffolded from the CTO package `context-index.md` template.
 - Guide template: `.cto/context/_guide-template.md` is scaffolded from the CTO package `context-guide.md` template.
-- Feature guide: copy `.cto/context/_guide-template.md` to `.cto/context/{slug}.md` for each long-running feature/context.
+- Feature guide: `/cto-continue {slug}` can scaffold `.cto/context/{slug}.md` from the guide template for each long-running feature/context.
 - `/cto-status` lists all indexed slugs without reading guides.
 - `/cto-status {slug}` reports the indexed status for one slug without reading the guide.
-- `/cto-continue {slug}` reads the index plus `.cto/context/{slug}.md` only.
+- `/cto-continue [slug]` checks the index, scaffolds missing index/guide context when needed, and with a slug reads `.cto/context/{slug}.md` only.
 
 Keep the index short. Keep each guide focused on current state, decisions, blockers, next actions, relevant files, and evidence.
 

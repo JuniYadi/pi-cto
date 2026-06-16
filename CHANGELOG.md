@@ -4,6 +4,13 @@ All notable changes to `@juniyadi/pi-cto` are documented here.
 
 This changelog was reconstructed from git history and release tags.
 
+## [Unreleased]
+
+### Changed
+- Updated `/cto` to treat arguments as natural language so README-promised auto-detection works for commands like `/cto planner plan the migration` and `/cto doing this work for feature whatsapp`.
+- Made `/cto-continue [slug]` the continuation lifecycle gate: it now checks/scaffolds missing context index and guide files, then resumes the selected context while preserving lazy loading.
+- Updated `/cto-status`, `/cto-init`, CTO core rules, skill router, templates, and README to align with the new continuation gate behavior.
+
 ## [1.5.0] - 2026-06-17
 
 ### Added
@@ -85,6 +92,7 @@ This changelog was reconstructed from git history and release tags.
   - tech-debt records
 - Added package metadata, README, and MIT license.
 
+[Unreleased]: https://github.com/juniyadi/pi-cto/compare/1.5.0...HEAD
 [1.5.0]: https://github.com/juniyadi/pi-cto/compare/1.4.0...1.5.0
 [1.4.0]: https://github.com/juniyadi/pi-cto/compare/1.3.0...1.4.0
 [1.3.0]: https://github.com/juniyadi/pi-cto/compare/99b00e5...1.3.0

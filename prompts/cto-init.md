@@ -71,4 +71,4 @@ After creating the structure, confirm:
 - [ ] `.cto/context/index.md` exists for index-only status checks
 - [ ] `.cto/context/_guide-template.md` exists for new `.cto/context/{slug}.md` guides
 - [ ] .gitignore updated
-- [ ] User knows how to use `/cto`, `/cto-status [slug]`, and `/cto-continue {slug}` for decisions, tasks, continuation context, and document generation
+- [ ] User knows how to use `/cto`, `/cto-status [slug]`, and `/cto-continue [slug]` for decisions, tasks, continuation context, and document generation

@@ -19,5 +19,5 @@ Compact index for `/cto-status` and `/cto-continue`. Keep this file short so sta
 ## Protocol
 
 - `/cto-status [slug]` reads this file only.
-- `/cto-continue {slug}` reads this file, then the matching guide only.
+- `/cto-continue [slug]` is the lifecycle gate: with a slug, check/add the index row, scaffold the guide if missing, then read that guide only; without a slug, list contexts and guide the user.
 - Do not paste full guide details here; keep summaries index-sized.

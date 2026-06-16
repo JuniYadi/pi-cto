@@ -52,7 +52,7 @@ Use `.cto/context/` for feature-specific state that must survive across sessions
 - `.cto/context/index.md` is the compact index: slug, status, owner, updated date, and one-line summary.
 - `.cto/context/{slug}.md` is the detailed guide for exactly one feature, project area, or long-running effort.
 - `/cto-status [slug]` reads only the index.
-- `/cto-continue {slug}` reads the index plus the requested slug guide.
+- `/cto-continue [slug]` is the continuation lifecycle gate: with a slug, check/scaffold missing context as needed and read only that slug guide; without a slug, list contexts and guide the user.
 - Normal `/cto` work must not read every context guide. Load a guide only when the user names the slug or explicitly asks for that context.
 - Keep guides concise: current state, key decisions, open questions, next actions, relevant files, and verification evidence.
 

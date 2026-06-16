@@ -9,7 +9,29 @@ description: CTO mode — 20y engineering leadership for decisions, reviews, pla
 
 Read `core.md` for identity, gates, and enforcement rules.
 
-## Step 2: Detect Mode
+## Step 2: Detect Continuation or Mode
+
+Treat user input as natural language.
+
+### 2A. Continuation Context Shortcut
+
+If the user asks to continue/resume/do existing work for a named feature/context/slug, for example:
+
+- `continue whatsapp`
+- `resume feature whatsapp`
+- `doing this work for feature whatsapp`
+- `work on context billing-migration`
+
+then follow `/cto-continue` semantics as the single continuation context lifecycle gate:
+
+1. Extract the slug from phrases like `feature {slug}`, `context {slug}`, `slug {slug}`, `continue {slug}`, `resume {slug}`, or `work on {slug}`.
+2. If no slug can be confidently extracted, read/check only `.cto/context/index.md`, list available contexts, and ask which slug to continue or scaffold.
+3. If a slug is extracted, read/check `.cto/context/index.md`, scaffold the index and/or `.cto/context/{slug}.md` from templates if missing, ensure the index row exists, then read only `.cto/context/{slug}.md` and continue.
+4. Do not read unrelated `.cto/context/*.md` files; read templates only when scaffolding is required.
+
+### 2B. Mode Detection
+
+If this is not a continuation request, detect the CTO mode. If nothing matches, default to Basic CTO and respond to the user's provided task directly.
 
 | User says | Mode | Skill file |
 |-----------|------|------------|
@@ -33,11 +55,12 @@ Read ONLY the detected skill file from `skills/` directory. Do NOT load all skil
 
 ## Continuation Context
 
-Project continuation context lives under `.cto/context/` and is loaded separately from normal `/cto` mode:
+Project continuation context lives under `.cto/context/` and stays lazy-loaded:
 
-- `/cto` does not eagerly load `.cto/context/*.md`.
+- `/cto` may load `.cto/context/index.md` plus one requested `.cto/context/{slug}.md` only when the user clearly names a feature/context/slug or asks to continue/resume existing work.
+- `/cto` must not eagerly load unrelated `.cto/context/*.md` files.
 - `/cto-status [slug]` reads only `.cto/context/index.md` for summaries and status.
-- `/cto-continue {slug}` reads `core.md`, `.cto/context/index.md`, and only `.cto/context/{slug}.md` for the requested slug.
+- `/cto-continue [slug]` is the lifecycle gate: with a slug it reads/checks the index, scaffolds missing index/guide context if needed, then reads only that slug guide; without a slug it lists contexts and guides the user.
 - Add or update a slug guide only when it contains material cross-session context that is worth preserving.
 
 ## Step 4: Apply

@@ -1,34 +1,36 @@
 ---
-description: Continue CTO work for a feature/context slug using lazy-loaded project context
-argument-hint: "{slug}"
+description: Continue CTO work using lazy-loaded project context; scaffolds missing context for a named slug
+argument-hint: "[slug]"
 ---
 
-# CTO Continue — Lazy Context Resume
+# CTO Continue — Lazy Context Gate
 
-Resume CTO work for a specific continuation context without loading unrelated project history.
+Continue CTO work through the single continuation context lifecycle gate without loading unrelated project history.
 
-## Required Argument
+## Optional Argument
 
-`/cto-continue {slug}` where `{slug}` matches an entry in `.cto/context/index.md` and a guide at `.cto/context/{slug}.md`.
+`/cto-continue [slug]`
 
-If no slug is provided:
-1. Read only `.cto/context/index.md`.
-2. List available slugs, statuses, and one-line summaries.
-3. Ask the user which slug to continue.
+- With `{slug}`: check the context index, scaffold missing context if needed, then continue from `.cto/context/{slug}.md`.
+- Without `{slug}`: check the context index, list available contexts, and guide the user to run `/cto-continue {slug}` or choose a new slug to scaffold.
 
 ## Loading Protocol
 
 1. Read `skills/cto/core.md` for gates and enforcement rules.
-2. Read `.cto/context/index.md`.
-3. Find the requested `{slug}` entry.
-4. Read only `.cto/context/{slug}.md` for the selected slug.
-5. Do **not** load other `.cto/context/*.md` files unless the user explicitly asks and explains why.
+2. Ensure `.cto/context/` exists before reading or scaffolding continuation files.
+3. Read `.cto/context/index.md`; if missing, scaffold it from `skills/cto/templates/context-index.md`.
+4. If no slug is provided, use the index only: list available slugs, statuses, and one-line summaries, then ask which slug to continue or scaffold.
+5. If a slug is provided, ensure an index row exists for `{slug}`; add a compact row when missing using status `active`, owner `TBD`, today's date, and guide `.cto/context/{slug}.md`.
+6. Ensure `.cto/context/{slug}.md` exists; scaffold it from `skills/cto/templates/context-guide.md` when missing, replacing `{Feature / Context Name}`, `{slug}`, status, owner, and date placeholders where possible.
+7. Read only `.cto/context/{slug}.md` for the selected slug.
+8. Do **not** load other `.cto/context/*.md` files. Read templates only when scaffolding is required.
 
 ## Missing Context Handling
 
-- If `.cto/context/index.md` is missing: ask the user to run `/cto-init` or create the index from `skills/cto/templates/context-index.md`.
-- If the slug is not in the index: report it as unknown using only the index, then suggest adding `.cto/context/{slug}.md` from `skills/cto/templates/context-guide.md`.
-- If the slug is indexed but `.cto/context/{slug}.md` is missing: report the broken reference and ask whether to scaffold it.
+- If `.cto/context/index.md` is missing: create `.cto/context/` and scaffold the index from `skills/cto/templates/context-index.md`.
+- If no slug is provided after checking the index: list existing contexts if any; otherwise say no contexts exist yet and ask for a slug to scaffold.
+- If the slug is not in the index: add a compact `active` row for it before continuing.
+- If `.cto/context/{slug}.md` is missing: scaffold it from `skills/cto/templates/context-guide.md`, replacing placeholders where possible.
 
 ## Execute
 
