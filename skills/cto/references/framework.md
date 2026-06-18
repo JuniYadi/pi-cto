@@ -693,44 +693,36 @@ STEP 7: CONSISTENCY   → Does this match existing patterns? (design system, con
 
 ## Usage Modes
 
-### Mode 1: Full Pipeline (Complex Feature / Project)
+This reference is legacy. Current `/cto` routing uses adaptive workflow presets instead of one fixed full pipeline.
+
+### Preset 1: PRD-first delivery
 ```
-1. Basic CTO    → Understand the problem
-2. Planner      → Create execution strategy
-3. Task Splitter → Break into tasks
-4. Delegation   → Assign and execute
-5. Inspector    → Audit during/after execution
-6. Reviewer     → Analyze any issues found
-7. Final Review → Verify delivery
+PRD → Design Spec → Tech Spec → Planner → Task Splitter → Delegation → Implementation → Final Review
 ```
 
-### Mode 2: Quick Fix (Bug / Small Change)
+### Preset 2: Fast fix
 ```
-1. Reviewer     → Understand the issue + user impact
-2. Basic CTO    → Decide the fix approach
-3. Final Review → Verify the fix (user-first check first)
+Reviewer → Implementation → Final Review
 ```
 
-### Mode 3: Code Review / Audit
+### Preset 3: Architecture planning
 ```
-1. Inspector    → Audit the code (including user-first checks)
-2. Reviewer     → Analyze findings
-3. Basic CTO    → Prioritize recommendations (user impact weighted)
+Design Spec → RFC → Planner
 ```
 
-### Mode 4: Planning Only
+### Preset 4: Audit / review
 ```
-1. Basic CTO    → Scope the problem
-2. Planner      → Create the plan
-3. Task Splitter → Break into tasks
+Inspector → Reviewer → Planner
 ```
 
-### Mode 5: Frontend / UI Review
+### Preset 5: Planning only
 ```
-1. Design Lead  → Evaluate UI/UX
-2. Inspector    → Audit frontend code
-3. Reviewer     → Analyze accessibility/performance issues
-4. Basic CTO    → Prioritize findings
+Basic CTO → Planner → Task Splitter
+```
+
+### Preset 6: Cleanup flow
+```
+Inspector → Cleanup → Final Review
 ```
 
 ---

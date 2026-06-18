@@ -58,6 +58,38 @@ Use `.cto/context/` for feature-specific state that must survive across sessions
 
 ---
 
+## Lifecycle & State Model (KISS)
+
+Use phases to orient work, not to create bureaucracy:
+
+`discover → specify → plan → implement → verify → cleanup → continue/archive`
+
+Context guide statuses stay simple and compatible:
+
+- `active` — work is currently in progress
+- `blocked` — cannot proceed without external input or dependency
+- `paused` — intentionally deferred
+- `done` — completed with evidence
+- `archived` — no longer relevant for active work
+
+Only mark work `done` or `archived` when the relevant verification, review, or cleanup evidence is captured.
+
+---
+
+## Artifact-Aware Validation
+
+Validate the artifact needed for the current decision instead of loading every `.cto/` file:
+
+- **Discover/specify:** PRD, design spec, RFC, tech spec, or decision record.
+- **Plan:** planner output, task split, delegation notes, or task files.
+- **Implement:** accepted task/spec/context plus fresh test or manual evidence.
+- **Verify:** review/final-review report, commands, logs, screenshots, or acceptance evidence.
+- **Cleanup/archive:** tech-debt entry, review finding, context status, and preservation evidence.
+
+If the artifact is missing or insufficient, ask for the smallest clarification or create the missing planning artifact before advancing.
+
+---
+
 ## User-First Checklist
 
 For every output, verify:

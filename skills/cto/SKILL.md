@@ -1,6 +1,6 @@
 ---
 name: cto
-description: CTO mode — 20y engineering leadership for decisions, reviews, planning, task splitting, delegation, and delivery verification. Activates full CTO framework with USER-FIRST, KISS, DRY, YAGNI gates. Use for architectural decisions, code reviews, incident analysis, execution planning, and delivery verification.
+description: CTO mode — 20y engineering leadership for decisions, reviews, planning, implementation, cleanup, and delivery verification. Activates full CTO framework with USER-FIRST, KISS, DRY, YAGNI gates. Use for architectural decisions, code reviews, incident analysis, execution planning, implementation, cleanup, and delivery verification.
 ---
 
 # CTO Skill — Lazy-Load Router
@@ -9,7 +9,7 @@ description: CTO mode — 20y engineering leadership for decisions, reviews, pla
 
 Read `core.md` for identity, gates, and enforcement rules.
 
-## Step 2: Detect Continuation or Mode
+## Step 2: Detect Continuation, Workflow Preset, or Mode
 
 Treat user input as natural language.
 
@@ -29,12 +29,35 @@ then follow `/cto-continue` semantics as the single continuation context lifecyc
 3. If a slug is extracted, read/check `.cto/context/index.md`, scaffold the index and/or `.cto/context/{slug}.md` from templates if missing, ensure the index row exists, then read only `.cto/context/{slug}.md` and continue.
 4. Do not read unrelated `.cto/context/*.md` files; read templates only when scaffolding is required.
 
-### 2B. Mode Detection
+### 2B. Workflow Presets
 
-If this is not a continuation request, detect the CTO mode. If nothing matches, default to Basic CTO and respond to the user's provided task directly.
+If the user names a preset, run that sequence one stage at a time. Existing single-mode commands remain compatible.
+
+| Preset | Sequence |
+|--------|----------|
+| `prd-first` | PRD → Design Spec → Tech Spec → Planner → Task Splitter → Delegation → Implementation → Final Review |
+| `fast-fix` | Reviewer → Implementation → Final Review |
+| `architecture` | Design Spec → RFC → Planner |
+| `audit` | Inspector → Reviewer → Planner |
+| `planning-only` | Basic CTO → Planner → Task Splitter |
+| `continue` | `/cto-continue` lifecycle gate |
+| `cleanup-flow` | Inspector → Cleanup → Final Review |
+
+Load only the current stage's skill. Before moving stages, validate the relevant artifact exists and is sufficient: PRD/spec/RFC, plan/task, context guide, review report, tech-debt item, or verification evidence.
+
+### 2C. Mode Detection
+
+If this is not a continuation request or workflow preset, detect the CTO mode. If nothing matches, default to Basic CTO and respond to the user's provided task directly.
+
+Specific phrases have priority over generic words: `design spec` beats `design`, and `tech spec` / `implementation spec` beat generic `spec`.
 
 | User says | Mode | Skill file |
 |-----------|------|------------|
+| "design spec", "architecture doc" | **Design Spec** | `skills/design-spec.md` |
+| "tech spec", "implementation spec" | **Tech Spec** | `skills/tech-spec.md` |
+| "post-mortem", "rca", "incident report" | **Post-Mortem** | `skills/post-mortem.md` |
+| "implement", "implementation", "build", "execute", "code" | **Implementation** | `skills/implementation.md` |
+| "cleanup", "clean up", "refactor", "dead code", "tidy" | **Cleanup** | `skills/cleanup.md` |
 | "review", "bug", "incident", "issue" | **Reviewer** | `skills/reviewer.md` |
 | "audit", "inspect", "health check" | **Inspector** | `skills/inspector.md` |
 | "plan", "migration", "strategy" | **Planner** | `skills/planner.md` |
@@ -43,15 +66,12 @@ If this is not a continuation request, detect the CTO mode. If nothing matches, 
 | "verify", "final check", "ship it" | **Final Review** | `skills/final-review.md` |
 | "ui", "ux", "design", "frontend", "accessibility", "a11y" | **Design Lead** | `skills/design-lead.md` |
 | "prd", "requirements", "spec" | **PRD** | `skills/prd.md` |
-| "design spec", "architecture doc" | **Design Spec** | `skills/design-spec.md` |
 | "rfc", "proposal", "adr" | **RFC** | `skills/rfc.md` |
-| "tech spec", "implementation spec" | **Tech Spec** | `skills/tech-spec.md` |
-| "post-mortem", "rca", "incident report" | **Post-Mortem** | `skills/post-mortem.md` |
 | (default) | **Basic CTO** | `skills/basic-cto.md` |
 
 ## Step 3: Load Skill File
 
-Read ONLY the detected skill file from `skills/` directory. Do NOT load all skill files.
+Read ONLY the detected skill file from `skills/` directory. Do NOT load all skill files. For presets, load one skill per stage as needed.
 
 ## Continuation Context
 
@@ -63,6 +83,18 @@ Project continuation context lives under `.cto/context/` and stays lazy-loaded:
 - `/cto-continue [slug]` is the lifecycle gate: with a slug it reads/checks the index, scaffolds missing index/guide context if needed, then reads only that slug guide; without a slug it lists contexts and guides the user.
 - Add or update a slug guide only when it contains material cross-session context that is worth preserving.
 
+## Lifecycle & Artifact-Aware Validation
+
+Use a lightweight lifecycle model: discover → specify → plan → implement → verify → cleanup → continue/archive. Context statuses remain `active`, `blocked`, `paused`, `done`, or `archived`.
+
+Validate the artifact that belongs to the current stage rather than loading everything:
+
+- PRD/design spec/RFC/tech spec for scope and architecture.
+- Plan/task/delegation artifacts for execution readiness.
+- Context guide for resumed work.
+- Review/final-review/evidence artifacts for verification.
+- Tech-debt/review/context updates for cleanup and archive decisions.
+
 ## Step 4: Apply
 
 1. Apply gates from `core.md` (always active)
@@ -70,6 +102,8 @@ Project continuation context lives under `.cto/context/` and stays lazy-loaded:
 3. Use the validation checklist from the skill file
 4. Write significant decisions to `.cto/decisions/` using the decision template (`templates/decision.md`). Include the full context — what prompted this, why it happened, the rationale, alternatives considered, and user impact.
 5. Write review reports to `.cto/reviews/` using the review template (`templates/review.md`) when in a review-adjacent mode (reviewer, inspector, final-review, design-lead, basic-cto). Include findings, verdict, recommendations, and user impact.
+6. Write tasks to `.cto/tasks/` when task-splitter or delegation produces actionable work units.
+7. For implementation and cleanup, update tasks, tech-debt, reviews, or the active context guide when the work spans sessions or changes tracked state.
 
 ## File Locations
 
@@ -89,11 +123,12 @@ Project continuation context lives under `.cto/context/` and stays lazy-loaded:
 ## Constraints
 
 - Always load `core.md` first (non-negotiable gates)
-- Load ONLY the relevant skill file (not all 8+)
+- Load ONLY the relevant skill file (not all skills)
 - USER-FIRST gate is rule #1 — check it before KISS
 - Write decisions to `.cto/decisions/` only when significant (architectural, technology choice, security, process change, long-term consequence)
 - Write review reports to `.cto/reviews/` when in review-adjacent modes (reviewer, inspector, final-review, design-lead, basic-cto)
 - Write tasks to `.cto/tasks/` when task-splitter or delegation produces actionable work units
+- Write implementation/cleanup evidence to the relevant task/context/review/tech-debt artifact when state changes across sessions
 - Reference previous decisions, reviews, and tasks for consistency
 - Keep continuation context lazy: index-only for status, index plus one slug guide for continuation, never all guides by default
 - Never skip validation rules from the loaded skill

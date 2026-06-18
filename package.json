@@ -1,6 +1,6 @@
 {
   "name": "@juniyadi/pi-cto",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "CTO mode for pi — 20y engineering leadership for decisions, reviews, planning, task splitting, delegation, and delivery verification",
   "keywords": [
     "pi-package",
@@ -19,6 +19,7 @@
   "files": [
     "skills/",
     "prompts/",
+    "scripts/",
     "README.md",
     "CHANGELOG.md",
     "LICENSE"
@@ -29,5 +30,17 @@
   },
   "engines": {
     "node": ">=18"
+  },
+  "scripts": {
+    "cto:validate": "node scripts/cto-continue-validator.mjs gate",
+    "cto:pre": "node scripts/cto-continue-validator.mjs pre",
+    "cto:post": "node scripts/cto-continue-validator.mjs post",
+    "cto:status": "node scripts/cto-continue-validator.mjs status",
+    "cto:schema": "node scripts/cto-continue-validator.mjs schema",
+    "cto:detect": "node scripts/cto-mode-validator.mjs detect",
+    "cto:mode": "node scripts/cto-mode-validator.mjs validate",
+    "cto:mode-list": "node scripts/cto-mode-validator.mjs list",
+    "cto:workflow": "node scripts/cto-mode-validator.mjs workflow",
+    "cto:pipeline": "node scripts/cto-mode-validator.mjs pipeline"
   }
 }

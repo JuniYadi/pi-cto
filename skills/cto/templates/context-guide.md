@@ -2,6 +2,7 @@
 
 Slug: `{slug}`  
 Status: active | blocked | paused | done | archived  
+Lifecycle phase: discover | specify | plan | implement | verify | cleanup | continue | archive
 Owner: TBD  
 Last updated: YYYY-MM-DD
 
@@ -16,6 +17,14 @@ What is true now? Include only facts needed to resume work quickly.
 ## Key Decisions
 
 - YYYY-MM-DD — Decision summary. Link to `.cto/decisions/YYYY-MM-DD-{slug}.md` when available.
+
+## Relevant Artifacts
+
+- `.cto/prd/{slug}.md` — product scope, if applicable
+- `.cto/design-specs/{slug}.md` — architecture/API design, if applicable
+- `.cto/tech-specs/{slug}.md` — implementation spec, if applicable
+- `.cto/tasks/T{NNN}-{slug}.md` — actionable task, if applicable
+- `.cto/reviews/YYYY-MM-DD-{slug}.md` — review/evidence, if applicable
 
 ## Relevant Files / Systems
 

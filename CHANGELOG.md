@@ -6,6 +6,18 @@ This changelog was reconstructed from git history and release tags.
 
 ## [Unreleased]
 
+## [1.8.0] - 2026-06-19
+
+### Added
+- Added workflow preset routing for `prd-first`, `fast-fix`, `architecture`, `audit`, `planning-only`, `continue`, and `cleanup-flow`.
+- Added scoped `implementation` and behavior-preserving `cleanup` modes to the CTO skill set.
+- Added validator and smoke-test npm scripts for continuation gates, mode detection, workflow presets, and pipeline checks.
+
+### Changed
+- Updated CTO routing and continuation behavior so workflow presets hand off to the right stage without loading unrelated context.
+- Strengthened continuation safety with slug, path, and `.cto` markdown scope checks.
+- Updated package contents to include scripts alongside prompts, skills, docs, and license files.
+
 ## [1.7.0] - 2026-06-17
 
 ### Changed
@@ -100,7 +112,8 @@ This changelog was reconstructed from git history and release tags.
   - tech-debt records
 - Added package metadata, README, and MIT license.
 
-[Unreleased]: https://github.com/juniyadi/pi-cto/compare/1.7.0...HEAD
+[Unreleased]: https://github.com/juniyadi/pi-cto/compare/1.8.0...HEAD
+[1.8.0]: https://github.com/juniyadi/pi-cto/compare/1.7.0...1.8.0
 [1.7.0]: https://github.com/juniyadi/pi-cto/compare/b5f31ac...1.7.0
 [1.6.0]: https://github.com/juniyadi/pi-cto/compare/1.5.0...b5f31ac
 [1.5.0]: https://github.com/juniyadi/pi-cto/compare/1.4.0...1.5.0

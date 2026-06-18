@@ -6,7 +6,7 @@ Compact index for `/cto-status` and `/cto-continue`. Keep this file short so sta
 
 | Slug | Status | Owner | Updated | Summary | Guide |
 |------|--------|-------|---------|---------|-------|
-| `example-feature` | active | TBD | YYYY-MM-DD | One-line current state and goal. | `.cto/context/example-feature.md` |
+| `example-feature` | active | TBD | YYYY-MM-DD | Phase: implement — one-line current state and goal. | `.cto/context/example-feature.md` |
 
 ## Status Values
 
@@ -20,4 +20,5 @@ Compact index for `/cto-status` and `/cto-continue`. Keep this file short so sta
 
 - `/cto-status [slug]` reads this file only.
 - `/cto-continue [slug]` is the lifecycle gate: with a slug, check/add the index row, scaffold the guide if missing, then read that guide only; without a slug, list contexts and guide the user.
+- Include lifecycle phase in the summary when useful; do not add guide-level detail here.
 - Do not paste full guide details here; keep summaries index-sized.
